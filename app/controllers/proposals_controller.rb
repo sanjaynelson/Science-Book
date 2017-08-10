@@ -2,7 +2,11 @@ class ProposalsController < ApplicationController
 
   def create
     @proposal = Proposal.new(proposal_params)
-    current_user.proposals << @proposal ? @proposal : redirect_to "new"
+    if current_user.proposals << @proposal
+      @proposal
+    else
+      render "new"
+    end
   end
 
   def show
@@ -14,7 +18,7 @@ class ProposalsController < ApplicationController
   end
 
   def index
-    @proposals = Proposals.all
+    @proposals = Proposal.all
   end
 
   private
