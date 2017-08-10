@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to 'main#index'
+      redirect_to 'user#index'
     else
       render 'new'
     end
