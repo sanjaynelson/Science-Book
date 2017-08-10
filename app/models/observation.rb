@@ -3,5 +3,5 @@ class Observation < ApplicationRecord
   has_many :comments, as: :commentable
   belongs_to :observable, polymorphic: true
 
-  validates :body, :user_id, presence: true
+  validates :body, :user_id, :observable, presence: true
 end
