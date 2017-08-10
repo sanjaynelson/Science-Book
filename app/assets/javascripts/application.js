@@ -11,4 +11,8 @@
 // about supported directives.
 //
 //= require rails-ujs
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 //= require_tree .

@@ -32,11 +32,16 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
 
     # Choose one or more libraries:
+<<<<<<< HEAD
     # with.library :active_record
     # with.library :active_model
     # with.library :action_controller
     # Or, choose the following (which implies all of the above):
     with.library :rails
+=======
+    with.library :active_model
+    # Or, choose the following (which implies all of the above):
+>>>>>>> master
   end
 end
 
@@ -70,4 +75,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
 end
