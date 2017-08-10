@@ -59,7 +59,7 @@ RSpec.describe ProposalsController, type: :controller do
   end
 
   describe "EDIT new" do
-    it "" do 
+    xit "" do
       get :edit
   end
 end
