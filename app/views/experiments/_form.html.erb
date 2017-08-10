@@ -1,9 +1,9 @@
 <%= form_for @experiment do |f| %>
 	<% if @experiment.errors.any? %>
 		<div class="errors">
-			<b><%= pluralize(@experiment.erros.count, 'error') %> prohibited this form from being saved: </b>
+			<b><%= pluralize(@experiment.errors.count, 'error') %> prohibited this form from being saved: </b>
 			<ul>
-				<% @experiment.erros.full_messages.each do |error| %>
+				<% @experiment.errors.full_messages.each do |error| %>
 					<li><%= error %></li>
 					<% end %>
 			</ul>
