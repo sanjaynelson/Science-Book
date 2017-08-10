@@ -57,4 +57,9 @@ RSpec.describe ProposalsController, type: :controller do
       expect(response).to redirect_to("/proposals/#{Proposal.last.id}")
     end
   end
+
+  describe "EDIT new" do
+    it "" do 
+      get :edit
+  end
 end

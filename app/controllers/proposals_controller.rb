@@ -20,7 +20,7 @@ class ProposalsController < ApplicationController
   end
 
   def edit
-    @proposal = Proposal.find_by(id: params[:id]) || Proposal.new
+    @proposal = Proposal.find_by(id: params[:id])
   end
 
   def update
