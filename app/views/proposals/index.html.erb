@@ -1,1 +1,9 @@
-<h1>INDEX</h1>
+<h1>Proposals</h1>
+
+<% if @proposals %>
+  <ul>
+    <% @proposals.each do |proposal| %>
+      <li><%= link_to proposal.title, proposal_path(proposal) %></li>
+    <% end %>
+  </ul>
+<% end %>
