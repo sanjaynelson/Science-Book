@@ -7,5 +7,11 @@
 	<p><%= @experiment.conclusion %></p>
 	<hv>	
 	<!-- add link_to procedures -->
+	<div class="procedures">
+		<h2>@experiemnt.procedures.count %>Procedures :</h2>
+		<%= render @experiment.procedures %>
+		<h3>Add a Procedure:</h3>
+		<%= render 'procedures/form' %>
+	</div>
 	<!-- add comments section -->
 </div>

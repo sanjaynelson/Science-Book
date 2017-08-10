@@ -1,0 +1,9 @@
+<div class="procedure-container">
+	<h1>Procedures</h1>
+	<% @procedures.each do |procedure| %>
+	<div class="procedure-wrapper">
+	<p><%= procedure.body %></p>
+	<small><%= procedure.created_at.strftime('%B %d %Y') %></small>
+	</div>
+	<% end %>
+</div>
