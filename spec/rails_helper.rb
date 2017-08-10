@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'capybara/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -31,8 +32,11 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
 
     # Choose one or more libraries:
-    with.library :active_model
+    # with.library :active_record
+    # with.library :active_model
+    # with.library :action_controller
     # Or, choose the following (which implies all of the above):
+    with.library :rails
   end
 end
 
