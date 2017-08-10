@@ -18,8 +18,8 @@ class ProceduresController < ApplicationController
 		redirect_to experiment_procedures_path(params[:experiment_id])
 	end
 
-	def show
-	end
+	# def show
+	# end
 
 	private
 		def procedure_params
