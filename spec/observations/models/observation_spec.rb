@@ -3,9 +3,9 @@ require 'rails_helper'
 describe Observation, type: :model do
   let!(:user) {User.create!(username: "user1", email: "u@u.com")}
 
-  let!(:proposal) {Proposal.create!(summary: "Flexitarian kogi lomo. Wolf butcher disrupt cornho...", hypothesis: "We need to copy the neural JSON bandwidth!", user: user)}
+  let!(:proposal) {Proposal.create!(summary: "Flexitarian kogi lomo. Wolf butcher disrupt cornho...", hypothesis: "We need to copy the neural JSON bandwidth!", user: user, title: "Thing")}
 
-  let!(:experiment) {Experiment.create!(results: "Centrifuges are no longer present", conclusion: "Centrifuges = Childhood Whimsy", proposal: proposal)}
+  let!(:experiment) {Experiment.create!(results: "Centrifuges are no longer present", conclusion: "Centrifuges = Childhood Whimsy", proposal: proposal, title: "Exy")}
 
 
   describe "validations" do
