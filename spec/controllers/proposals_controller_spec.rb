@@ -56,6 +56,5 @@ RSpec.describe ProposalsController, type: :controller do
       expect(response).to have_http_status 302
       expect(response).to redirect_to("/proposals/#{Proposal.last.id}")
     end
-
   end
 end
