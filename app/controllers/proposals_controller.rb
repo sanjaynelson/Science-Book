@@ -2,10 +2,12 @@ class ProposalsController < ApplicationController
 
   def create
     @proposal = Proposal.new(proposal_params)
-    if current_user.proposals << @proposal
-      @proposal
+    # TODO Erase fake user once user object becomes implemented
+    @user = User.last
+    if @user.proposals << @proposal
+      redirect_to @proposal
     else
-      render "new"
+      render "new", status: 422
     end
   end
 

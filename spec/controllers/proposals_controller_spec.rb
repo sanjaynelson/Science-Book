@@ -40,8 +40,22 @@ RSpec.describe ProposalsController, type: :controller do
   end
 
   describe "POST create" do
-    xit "renders 'new' invalid input is submitted" do
-      post :create
+    it "renders 'new' on invalid input" do
+       post :create, params: { proposal: { title: nil } }
+       expect(response.status).to eq 422
+       expect(response).to render_template(:new)
     end
+
+    it "saves proposal to db" do
+      post :create, params: { proposal: {title: "Test", summary: "test", hypothesis: "test" } }
+      expect(assigns(:proposal).persisted?).to be true
+    end
+
+    it "redirects to that proposal on successful creation" do
+      post :create, params: { proposal: { title: "Test", summary: "test", hypothesis: "test" } }
+      expect(response).to have_http_status 302
+      expect(response).to redirect_to("/proposals/#{Proposal.last.id}")
+    end
+
   end
 end
