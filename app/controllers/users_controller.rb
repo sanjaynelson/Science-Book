@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to 'main#index'
     else
       render 'new'
     end
@@ -23,9 +23,16 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update_attributes(user_params)
+      redirect_to 'main#index'
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @user.destroy
+    redirect_to 'main#index'
   end
 
   private
