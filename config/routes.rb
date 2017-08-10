@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :experiments do 
-  	resources :procedures
-  end
-  
 
-  resources :proposals, only: [:index, :new, :show, :update, :edit, :create]
-  root 'experiments#index'
+  resources :proposals, only: [:index, :new, :show, :update, :edit, :create] do
+    resources :experiments
+  end
+
+  resources :experiments do
+    resources :procedures
+  end
+  root 'proposals#index'
 end
