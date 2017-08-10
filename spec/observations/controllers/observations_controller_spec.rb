@@ -47,14 +47,33 @@ describe ObservationsController, type: :controller do
         expect{post :create, params: {observation: {body: 'Totes Sweet!', user: user}, id: experiment.id}}.to change{Observation.all.count}.by 1
       end
 
-      xit 'assigns the newly created observation to @observation' do
+      it 'assigns the newly created observation to @observation' do
+        post :create, params: {observation: {body: 'Totes Sweet!', user: user}, id: experiment.id}
+        expect(assigns(:observation)). to eq Observation.last
       end
 
-      xit 'redirects to the games experiment' do
+      it 'redirects to the experiment associated with observation' do
+        post :create, params: {observation: {body: 'Totes Sweet!', user: user}, id: experiment.id}
+        expect(response).to redirect_to("/experiments/#{experiment.id}/observations")
       end
 
     end
 
+    context 'when invalid params are passed' do
+      it 'responds with status code 422' do
+        post :create, params: {observation: {body: nil , user: user}, id: experiment.id}
+        expect(response).to have_http_status 422
+      end
+
+      it 'does not create a new observation in the database' do
+        expect{post :create, params: {observation: {body: nil, user: user}, id: experiment.id}}.not_to change{Observation.all.count}
+      end
+
+      it 'renders the index template' do
+        post :create, params: {observation: {body: nil , user: user}, id: experiment.id}
+        expect(response).to render_template(:index)
+      end
+    end
   end
 
   # describe 'PUT' do

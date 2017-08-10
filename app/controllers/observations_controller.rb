@@ -9,7 +9,12 @@ class ObservationsController < ApplicationController
     @observation.user = User.find_by(session[:id])
     @experiment.observations << @observation
 
-    redirect_to action: 'index'
+    if @observation.save
+      redirect_to action: 'index'
+    else
+      render :index, status: 422
+    end
+
   end
 
   private
