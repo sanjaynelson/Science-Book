@@ -9,10 +9,9 @@ class ProceduresController < ApplicationController
 
 	def create
 		@experiment = Experiment.find(params[:experiment_id])
-		p "****************"
-		p params
+		
 		@procedure = @experiment.procedures.new(procedure_params)
-		p @procedures
+		
 		p "*****************"
 		@procedure.save
 		redirect_to experiment_procedures_path(params[:experiment_id])
