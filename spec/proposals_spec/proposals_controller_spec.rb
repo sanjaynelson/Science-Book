@@ -26,4 +26,22 @@ RSpec.describe ProposalsController, type: :controller do
       expect(assigns(:proposal)).to be_a Proposal
     end
   end
+
+  describe "GET new" do
+    it "has a 200 status code" do
+      get :new
+      expect(response.status).to eq (200)
+    end
+
+    it "has an empty proposal object" do
+      get :new
+      expect(assigns(:proposal)).to have_attributes(title: nil, summary: nil, hypothesis: nil, user_id: nil)
+    end
+  end
+
+  describe "POST create" do
+    xit "renders 'new' invalid input is submitted" do
+      post :create
+    end
+  end
 end
