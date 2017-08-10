@@ -15,15 +15,6 @@ class ExperimentsController < ApplicationController
 		@proposal = Proposal.find_by(id: params[:proposal_id])
 		@experiment = Experiment.new(experiment_params)
 		@experiment.username = "Test"
-		# need a proposal id to work
-		# @experiment.proposal_id = proposal_id
-		# if @experiment.save
-		# 	redirect_to root_path, notice: 'Experiment was successfully created'
-		# else
-		# 	render 'new', status: 422
-		# end
-
-
 		if @proposal.experiments << @experiment
 			redirect_to @experiment, notice: 'Experiment was successfully created'
 		else
