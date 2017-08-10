@@ -15,7 +15,7 @@ RSpec.describe ExperimentsController, type: :controller do
 		end
 
 		it "renders the :index template" do
-			
+
 			get :index
 			expect(response).to render_template("index")
 		end
@@ -28,11 +28,11 @@ RSpec.describe ExperimentsController, type: :controller do
 		end
 		it "assigns a new experiment to @experiment" do
 			get :new
-			expect(assigns(:experiment)).to be_a_new Experiment 
+			expect(assigns(:experiment)).to be_a_new Experiment
 		end
 		it "renders the :new template" do
 			get :new
-			expect(response).to render_template(:new) 
+			expect(response).to render_template(:new)
 		end
 	end
 
