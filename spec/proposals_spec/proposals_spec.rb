@@ -24,4 +24,43 @@ describe Proposal do
       record.errors[:title].should_not include("can't be blank")
     end
   end
+
+  describe "summary" do
+    it 'should validate presence' do
+      record = Proposal.new
+      record.summary = ''
+      record.valid?
+      record.errors[:summary].should include("can't be blank")
+
+      record.summary = "Test"
+      record.valid?
+      record.errors[:summary].should_not include("can't be blank")
+    end
+  end
+
+  describe "hypothesis" do
+    it 'should validate presence' do
+      record = Proposal.new
+      record.hypothesis = ''
+      record.valid?
+      record.errors[:hypothesis].should include("can't be blank")
+
+      record.hypothesis = "Test"
+      record.valid?
+      record.errors[:hypothesis].should_not include("can't be blank")
+    end
+  end
+
+  describe "user_id" do
+    it 'should validate presence' do
+      record = Proposal.new
+      record.user_id = ''
+      record.valid?
+      record.errors[:user_id].should include("can't be blank")
+
+      record.user_id = 1
+      record.valid?
+      record.errors[:user_id].should_not include("can't be blank")
+    end
+  end
 end
