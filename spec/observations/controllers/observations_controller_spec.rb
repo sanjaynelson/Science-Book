@@ -43,7 +43,8 @@ describe ObservationsController, type: :controller do
         expect(response).to have_http_status 302
       end
 
-      xit 'creates a new observation in the database' do
+      it 'creates a new observation in the database' do
+        expect{post :create, params: {observation: {body: 'Totes Sweet!', user: user}, id: experiment.id}}.to change{Observation.all.count}.by 1
       end
 
       xit 'assigns the newly created observation to @observation' do
