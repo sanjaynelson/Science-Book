@@ -13,8 +13,6 @@ class ProceduresController < ApplicationController
 		@experiment = Experiment.find(params[:experiment_id])
 
 		@procedure = @experiment.procedures.new(procedure_params)
-
-		p "*****************"
 		@procedure.save
 		redirect_to experiment_procedures_path(params[:experiment_id])
 	end
