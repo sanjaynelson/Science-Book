@@ -1,5 +1,5 @@
 class ProposalsController < ApplicationController
-  before_action :authenticate!
+  before_action :authenticate!, except:[:index]
 
   def create
     @proposal = Proposal.new(proposal_params)
@@ -34,6 +34,7 @@ class ProposalsController < ApplicationController
   end
 
   def index
+    redirect_to new_session_path if !logged_in?
     @proposals = Proposal.all
   end
 
