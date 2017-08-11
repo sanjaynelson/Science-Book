@@ -16,10 +16,10 @@
   </div>
   <div>
     <%= f.label :role, "Role" %>
-    <%= f.text_field :role %>
+    <%= f.select :role, ["admin", "faculty", "scientist"], prompt: "-----"%>
   </div>
   <div>
-    <%= f.submit "Submit" %>
+    <%= f.submit "Submit", value: "Create Account" %>
   </div>
 
 <% end %>

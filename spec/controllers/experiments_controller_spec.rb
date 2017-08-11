@@ -5,7 +5,13 @@ RSpec.describe ExperimentsController, type: :controller do
 
 	let!(:proposal) { Proposal.create!(title: Faker::Hipster.word, summary: Faker::Hipster.paragraph, hypothesis: Faker::Hacker.say_something_smart, user_id: user.id)}
 
+
+
 	let!(:experiment) { Experiment.create!(title: Faker::Hipster.sentence, proposal_id: proposal.id, username: "sahamak" )}
+
+	before(:each) do
+		session[:user_id] = user.id
+	end
 
 	describe "Get #index" do
 		it "responds with status code 200" do
