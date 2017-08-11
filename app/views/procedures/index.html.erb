@@ -11,9 +11,11 @@
 		<h2>Observations</h2>
 		<%= render partial: 'observations/observation_container', locals: { parent: procedure} %>
 		</div>
+		<%= render partial: 'observations/observation_container', locals: {parent: procedure} %>
 		<% end %>
 	</div>
 	<h3>Add a Procedure:</h3>
+
 	<%= render 'procedures/form' %>
 	<hr>
 	<%= link_to "Back to experiment", experiment_path(@experiment)%>

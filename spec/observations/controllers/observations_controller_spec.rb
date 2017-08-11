@@ -1,4 +1,5 @@
 # require 'rails_helper'
+
 #
 # describe ObservationsController, type: :controller do
 #
@@ -14,13 +15,12 @@
 #     session[:user_id] = user.id
 #   end
 #   # experiment.observations << observation_e
-#
-#
+
 #   describe 'GET #index' do
 #     it 'prints experiment' do
 #           expect(true).to be true
 #     end
-#
+
 #     it 'responds with status code 200' do
 #       get :index, params: {id: experiment.id}
 #       expect(response).to have_http_status 200
@@ -39,13 +39,14 @@
 #       expect(response).to render_template(:index)
 #     end
 #   end
-#
+
 #   describe 'POST #create' do
 #     context 'when valid params are passed' do
 #       it 'responds with status code 302' do
 #         post :create, params: {observation: {body: 'Totes Sweet!', user: user}, id: experiment.id}
 #         expect(response).to have_http_status 302
 #       end
+
 #
 #       it 'creates a new observation in the database' do
 #         expect{post :create, params: {observation: {body: 'Totes Sweet!', user: user}, id: experiment.id}}.to change{Observation.all.count}.by 1
@@ -55,7 +56,7 @@
 #         post :create, params: {observation: {body: 'Totes Sweet!', user: user}, id: experiment.id}
 #         expect(assigns(:observation)). to eq Observation.last
 #       end
-#
+
 #       it 'redirects to the experiment associated with observation' do
 #         post :create, params: {observation: {body: 'Totes Sweet!', user: user}, id: experiment.id}
 #         expect(response).to redirect_to("/experiments/#{experiment.id}/observations")
@@ -79,6 +80,7 @@
 #       end
 #     end
 #   end
+
 #
 #   # describe 'PUT' do
 #   # end

@@ -2,20 +2,45 @@ class ObservationsController < ApplicationController
   before_action :authenticate!
 
   def index
-    @experiment = Experiment.find(params[:id])
+    if params[:experiment_id]
+      @experiment = Experiment.find(params[:experiment_id])
+
+    elsif params[:procedure_id]
+      @procedure = Procedure.find(params[:procedure_id])
+
+    end
+
+
   end
 
   def create
-    @experiment = Experiment.find(params[:id])
-    @observation = Observation.new(observation_params)
-    @observation.user = User.find_by(session[:id])
-    @experiment.observations << @observation
+    # p params
+    if params[:experiment_id]
+      @experiment = Experiment.find(params[:experiment_id])
+      @observation = Observation.new(observation_params)
+      @observation.user = current_user
+      @observation.observable = @experiment
 
-    if @observation.save
-      redirect_to action: 'index'
-    else
-      render :index, status: 422
+
+
+      if @observation.save
+        redirect_to @experiment
+      else
+        render :index, status: 422
+      end
+    elsif params[:procedure_id]
+      @procedure = Procedure.find(params[:procedure_id])
+      @observation = Observation.new(observation_params)
+      @observation.user = current_user
+      @observation.observable = @procedure
+
+      if @observation.save
+        redirect_to experiment_procedures_path(@procedure.experiment.id)
+      else
+        render :index, status: 422
+      end
     end
+
 
   end
 
