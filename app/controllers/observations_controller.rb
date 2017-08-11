@@ -1,4 +1,6 @@
 class ObservationsController < ApplicationController
+  before_action :authenticate!
+
   def index
     @experiment = Experiment.find(params[:id])
   end

@@ -1,4 +1,5 @@
 class ProposalsController < ApplicationController
+  before_action :authenticate!
 
   def create
     @proposal = Proposal.new(proposal_params)

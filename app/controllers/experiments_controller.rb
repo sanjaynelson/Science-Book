@@ -1,4 +1,5 @@
 class ExperimentsController < ApplicationController
+	before_action :authenticate!
 
 	def index
 		@experiments = Experiment.all.order('created_at DESC')
@@ -10,11 +11,11 @@ class ExperimentsController < ApplicationController
 	end
 
 	def create
-		#TODO Remove dummy user once we merge User objects
-		@user = User.last
+		#TODO Create dropdown menu in form of all user scientists, then use params & find_by
+		# @user = current_user
 		@proposal = Proposal.find_by(id: params[:proposal_id])
 		@experiment = Experiment.new(experiment_params)
-		@experiment.username = "Test"
+		# @experiment.user = @user
 		if @proposal.experiments << @experiment
 			redirect_to @experiment, notice: 'Experiment was successfully created'
 		else
