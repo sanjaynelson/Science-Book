@@ -3,7 +3,13 @@ require "rails_helper"
 RSpec.describe ProposalsController, type: :controller do
   let!(:user) {User.create!(username: "Test", password_digest: "Test", role: "faculty", email: "test@test.com")}
   let!(:proposal) { Proposal.create!(title: "Test", summary: "Test", hypothesis: "Test", user_id: user.id)}
+
+  before(:each) do
+    session[:user_id] = user.id
+  end
+
   describe "GET index" do
+
     it "has a 200 status code" do
       get :index
       expect(response.status).to eq (200)

@@ -10,10 +10,10 @@ experiment_count = 100
 procedures_count = 200
 observations_count = 100
 
-User.create!(username: "Admin", email: "admin@gmail.com", password_digest: "password", role: "Admin")
+User.create!(username: "admin", email: "admin@gmail.com", password: "password", role: "admin")
 
 user_count.times do
-  User.create!(username: Faker::Internet.user_name, email:Faker::Internet.email, password_digest: "password", role: ROLES.sample)
+  User.create!(username: Faker::Internet.user_name, email:Faker::Internet.email, password: "password", role: ROLES.sample)
 end
 
 proposal_count.times do

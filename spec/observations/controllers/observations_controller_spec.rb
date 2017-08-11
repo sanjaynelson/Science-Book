@@ -2,14 +2,18 @@ require 'rails_helper'
 
 describe ObservationsController, type: :controller do
 
-   let!(:user) {User.create!(username:"testuser", email: "test@gmail.com", role: "faculty", password:"password")}
+  let!(:user) {User.create!(username:"testuser", email: "test@gmail.com", role: "faculty", password:"password")}
 
-   let!(:proposal) {Proposal.create!(summary: "Flexitarian kogi lomo. Wolf butcher disrupt cornho...", hypothesis: "We need to copy the neural JSON bandwidth!", user: user, title: "Thing")}
+  let!(:proposal) {Proposal.create!(summary: "Flexitarian kogi lomo. Wolf butcher disrupt cornho...", hypothesis: "We need to copy the neural JSON bandwidth!", user: user, title: "Thing")}
 
-   let!(:experiment) {Experiment.create!(results: "Centrifuges are no longer present", conclusion: "Centrifuges = Childhood Whimsy", proposal: proposal, title: "Exy")}
+  let!(:experiment) {Experiment.create!(results: "Centrifuges are no longer present", conclusion: "Centrifuges = Childhood Whimsy", proposal: proposal, title: "Exy")}
 
-   let!(:observation_e) {Observation.new(body: "Heckin cool!", user: user)}
-   # experiment.observations << observation_e
+  let!(:observation_e) {Observation.new(body: "Heckin cool!", user: user)}
+
+  before(:each) do
+    session[:user_id] = user.id
+  end
+  # experiment.observations << observation_e
 
 
   describe 'GET #index' do
