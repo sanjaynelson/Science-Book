@@ -4,6 +4,6 @@
   <%= observation.body %>
   </p>
 
-  <small> Written by <b> REINSERT AUTHOR LOGIC WHEN SESSION ADDED</b></small>
+  <small> Written by <b> <%= observation.user.username %></b> on <%= observation.created_at.strftime("%B %d %Y") %></small>
    <!-- render partial: 'comments/comment_container', locals: {parent: observation}  -->
 </div>
