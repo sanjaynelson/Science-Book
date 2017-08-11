@@ -18,8 +18,9 @@ class ObservationsController < ApplicationController
     if params[:experiment_id]
       @experiment = Experiment.find(params[:experiment_id])
       @observation = Observation.new(observation_params)
-      @observation.user = User.find(1)
-      @experiment.observations << @observation
+      @observation.user = current_user
+      @observation.observable = @experiment
+
 
 
       if @observation.save
@@ -30,11 +31,11 @@ class ObservationsController < ApplicationController
     elsif params[:procedure_id]
       @procedure = Procedure.find(params[:procedure_id])
       @observation = Observation.new(observation_params)
-      @observation.user = User.find(1)
-      @procedure.observations << @observation
+      @observation.user = current_user
+      @observation.observable = @procedure
 
       if @observation.save
-        redirect_to @procedure.experiment.procedures
+        redirect_to experiment_procedures_path(@procedure.experiment.id)
       else
         render :index, status: 422
       end
