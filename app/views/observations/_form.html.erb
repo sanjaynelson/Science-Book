@@ -1,6 +1,6 @@
 <div class="form-wraper">
 
-<%= form_for :observation do |f| %>
+<%= form_for :observation, url: experiment_observations_path(@experiment) do |f| %>
   <p><%= f.label :body %></p>
     <p><%= f.text_area :body %></p>
 
