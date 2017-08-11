@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :experiments do
-    resources :observations, only: [:index, :create]
+    resources :observations, only: [:index, :new, :create]
   end
 
   resources :procedures do
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   # get 'procedures/:id/observations' => 'observations#index'
   # post 'procedures/:id/observations' => 'observations#create'
 
-  # get 'experiments/:id/observations' => 'observations#index'
+  get 'experiments/:id/observations' => 'observations#index'
   # post 'experiments/:id/observations' => 'observations#create'
   # post 'experiments/:id/comments' => 'comments#create'
 

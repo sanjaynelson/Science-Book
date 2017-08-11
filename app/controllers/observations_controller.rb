@@ -1,6 +1,14 @@
 class ObservationsController < ApplicationController
   def index
-    @experiment = Experiment.find(params[:id])
+    if params[:experiment_id]
+      @experiment = Experiment.find(params[:experiment_id])
+
+    elsif params[:procedure_id]
+      @procedure = Procedure.find(params[:procedure_id])
+
+    end
+
+
   end
 
   def create
@@ -8,6 +16,7 @@ class ObservationsController < ApplicationController
     if params[:experiment_id]
       @experiment = Experiment.find(params[:experiment_id])
       @observation = Observation.new(observation_params)
+      @observation.user = User.find(1)
       @experiment.observations << @observation
 
 
@@ -19,8 +28,8 @@ class ObservationsController < ApplicationController
     elsif params[:procedure_id]
       @procedure = Procedure.find(params[:procedure_id])
       @observation = Observation.new(observation_params)
+      @observation.user = User.find(1)
       @procedure.observations << @observation
-
 
       if @observation.save
         redirect_to @procedure.experiment.procedures
