@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+.container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+
+.proposals {
+  font-size: 1.5em;
+}
+
+.proposals ul{
+  list-style: none;
+}
+
+.proposals li{
+  padding: 5px;
+}
+
+.proposals li:nth-child(even) {
+  background-color: #eaf2ff;
+}

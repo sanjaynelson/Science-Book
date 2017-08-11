@@ -1,4 +1,6 @@
 class ProceduresController < ApplicationController
+	before_action :authenticate!
+
 	def index
 		@experiment = Experiment.find(params[:experiment_id])
 		@procedures = @experiment.procedures.all
@@ -11,7 +13,6 @@ class ProceduresController < ApplicationController
 		@experiment = Experiment.find(params[:experiment_id])
 
 		@procedure = @experiment.procedures.new(procedure_params)
-		
 		@procedure.save
 		redirect_to experiment_procedures_path(params[:experiment_id])
 	end
