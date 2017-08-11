@@ -6,19 +6,21 @@ class ExperimentsController < ApplicationController
 	end
 
 	def new
+		@proposal = Proposal.find_by(id: params[:proposal_id])
 		@experiment = Experiment.new
 	end
 
 	def create
+		#TODO Create dropdown menu in form of all user scientists, then use params & find_by
+		# @user = current_user
+		@proposal = Proposal.find_by(id: params[:proposal_id])
 		@experiment = Experiment.new(experiment_params)
-		# need a proposal id to work
-		# @experiment.proposal_id = proposal_id
-		if @experiment.save
-			redirect_to root_path, notice: 'Experiment was successfully created'
+		# @experiment.user = @user
+		if @proposal.experiments << @experiment
+			redirect_to @experiment, notice: 'Experiment was successfully created'
 		else
 			render 'new', status: 422
 		end
-
 	end
 
 	def show

@@ -5,4 +5,5 @@
   </p>
 
   <small> Written by <b><%= observation.user.username %></b></small>
+  <%= render partial: 'comments/comment_container', locals: {parent: observation} %>
 </div>
