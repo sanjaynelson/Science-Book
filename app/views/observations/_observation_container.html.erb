@@ -3,5 +3,5 @@
   <% parent.observations.each do |observation| %>
     <%= render partial: 'observations/observation', locals: {observation: observation} %>
   <% end %>
-  <%= render 'observations/form' %>
+  <%= render partial: 'observations/form', locals: {parent: parent} %>
 </div>

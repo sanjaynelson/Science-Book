@@ -9,10 +9,12 @@
 		<small><%= procedure.created_at.strftime('%B %d %Y') %></small>
 		<small><%= procedure.username %></small>
 		</div>
+		<%= render partial: 'observations/observation_container', locals: {parent: procedure} %>
 		<% end %>
 	</div>
 	<h3>Add a Procedure:</h3>
 		<%= render 'procedures/form' %>
 		<%= link_to "Back to experiment", experiment_path(@experiment)%>
+
 </div>
 	<!-- add comments section -->
