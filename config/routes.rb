@@ -22,6 +22,5 @@ Rails.application.routes.draw do
   # get 'experiments/:id/observations' => 'observations#index'
   # post 'experiments/:id/observations' => 'observations#create'
   # post 'experiments/:id/comments' => 'comments#create'
-
-  root 'proposals#index'
+  root 'main#index'
 end
