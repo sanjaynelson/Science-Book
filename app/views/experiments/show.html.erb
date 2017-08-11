@@ -5,12 +5,12 @@
 	<p><%= @experiment.results %></p>
 	<h2>Conclusion</h2>
 	<p><%= @experiment.conclusion %></p>
-	<hv>
-	<!-- add link_to procedures -->
+	<hr>
+	<h2>Observations</h2>
+	<%= render partial: 'observations/observation_container', locals: { parent: @experiment} %>
+	<hr>
+	<h2><%= @experiment.procedures.count %> <%= link_to 'Procedures', experiment_procedures_path(@experiment.id) %></h2>
 	<button class="button">
 		<%= link_to "Back to Proposal", proposal_path(@experiment.proposal)%>
-		<%= link_to 'Procedures', experiment_procedures_path(@experiment.id) %>
 	</button>
-
-	<!-- add comments section -->
 </div>

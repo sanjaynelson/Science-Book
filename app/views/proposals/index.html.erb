@@ -1,10 +1,16 @@
+<div class="container">
+
 <h1>Proposals</h1>
-<%= link_to "Create new proposal", new_proposal_path%>
+<%= link_to "Create new proposal", new_proposal_path, class: "proposals create"%>
 
 <% if @proposals %>
-  <ul>
+<div class="proposals">
+    <ul>
     <% @proposals.each do |proposal| %>
-      <li><%= link_to proposal.title, proposal_path(proposal) %><span> <%= proposal.created_at %></span></li>
+      <li><%= link_to proposal.title, proposal_path(proposal) %><span> <%= proposal.created_at.strftime("%Y-%m-%d") %></span></li>
     <% end %>
   </ul>
+</div>
+
 <% end %>
+</div>
