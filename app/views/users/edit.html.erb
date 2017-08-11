@@ -16,7 +16,7 @@
   </div>
   <div>
     <%= f.label :role, "Role" %>
-    <%= f.text_field :role, placeholder:@user.role %>
+    <%= f.select :role, ["admin", "faculty", "scientist"], prompt: "-----"%>
   </div>
   <div>
     <%= f.submit "Submit", value: "Update Account" %>
