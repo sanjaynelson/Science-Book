@@ -17,6 +17,26 @@
   background-color: #eaf2ff;
 }
 
+
+.navbar-container {
+  position: absolute;
+  top: 0;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  background-color: orange;
+}
+
+.nav li {
+  display: inline-block;
+  margin: 0 .8em 0 .8em;
+  background: white;
+  padding: .5em;
+  border: .2em solid white;
+  border-radius: .2em;
+  color: black;
+}
+
 .experiment-container {
   background-color: #eaf2ff;
 }
@@ -53,6 +73,7 @@ a {
 
 
 .container {
+  padding-top: 100px;
   width: 600px;
   margin: 0 auto;
 }

@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def destroy
     authorize!(@user)
-    @user.destroy
+    @user.destroy!
     redirect_to root_path
   end
 

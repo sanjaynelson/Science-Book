@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def is_admin?
-    current_user && current_user.role == "admin"
+    current_user.role == "admin"
   end
 
   def current_user
