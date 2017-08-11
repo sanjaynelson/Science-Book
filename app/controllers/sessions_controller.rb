@@ -6,13 +6,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:session][:username])
-    if @user && @user.authenticate(params[:session][:password])
-      session[:user_id] = @user.id
-      redirect_to @user
+    if logged_in?
+      redirect_to root_path
     else
-      @errors = ["Incorrect Username or Password"]
-      render 'new'
+      @user = User.find_by(username: params[:session][:username])
+      if @user && @user.authenticate(params[:session][:password])
+        # puts "user exists and is authenticated"
+        session[:user_id] = @user.id
+        redirect_to root_path
+      else
+        # puts "failed, but user nil returns #{@user.nil?}"
+        @errors = ["Incorrect Username or Password"]
+        render 'new'
+      end
     end
   end
 
