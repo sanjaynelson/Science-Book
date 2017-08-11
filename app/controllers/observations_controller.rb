@@ -6,13 +6,16 @@ class ObservationsController < ApplicationController
   end
 
   def create
-    @experiment = Experiment.find(params[:id])
+    p "*************"
+    p "inside observation/create"
+    @experiment = Experiment.find(params[:experiment_id])
     @observation = Observation.new(observation_params)
     @observation.user = User.find_by(session[:id])
     @experiment.observations << @observation
 
     if @observation.save
-      redirect_to action: 'index'
+      # redirect_to action: 'index'
+      redirect_to @experiment
     else
       render :index, status: 422
     end
