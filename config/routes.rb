@@ -11,9 +11,16 @@ Rails.application.routes.draw do
     resources :procedures
   end
 
-  get 'experiments/:id/observations' => 'observations#index'
-  post 'experiments/:id/observations' => 'observations#create'
-  post 'experiments/:id/comments' => 'comments#create'
+  resources :experiments do
+    resources :observations, only: [:show, :create]
+  end
 
-  root 'proposals#index'
+  resources :procedures do
+    resources :observations, only: [:show, :create]
+  end
+
+  # get 'experiments/:id/observations' => 'observations#index'
+  # post 'experiments/:id/observations' => 'observations#create'
+  # post 'experiments/:id/comments' => 'comments#create'
+  root 'main#index'
 end

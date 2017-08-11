@@ -1,7 +1,7 @@
 <div class="observations-container">
 
   <% parent.observations.each do |observation| %>
-    <%= render partial: 'observation', locals: {observation: observation} %>
+    <%= render partial: 'observations/observation', locals: {observation: observation} %>
   <% end %>
-  <%= render 'form' %>
+  <%= render 'observations/form' %>
 </div>
