@@ -5,7 +5,9 @@
 
   <ul>
     <% @proposal.experiments.each do |experiment| %>
-      <li><%= link_to experiment.title, proposal_experiment_path(experiment) %></li>
+    <% p experiment.proposal_id %>
+    <% p experiment.id %>
+      <li><%= link_to experiment.title, [experiment.proposal, experiment] %></li>
     <% end %>
   </ul>
 
