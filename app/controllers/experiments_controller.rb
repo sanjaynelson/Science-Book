@@ -1,5 +1,5 @@
 class ExperimentsController < ApplicationController
-	before_action :authenticate
+	before_action :authenticate!
 
 	def index
 		@experiments = Experiment.all.order('created_at DESC')

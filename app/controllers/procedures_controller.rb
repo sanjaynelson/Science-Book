@@ -1,5 +1,5 @@
 class ProceduresController < ApplicationController
-	before_action :authenticate
+	before_action :authenticate!
 
 	def index
 		@experiment = Experiment.find(params[:experiment_id])

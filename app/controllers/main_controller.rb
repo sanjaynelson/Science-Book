@@ -1,5 +1,4 @@
 class MainController < ApplicationController
-  # include ApplicationHelper
 
   def index
     if logged_in?
