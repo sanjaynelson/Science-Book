@@ -1,15 +1,19 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_admin!, only: [:index, :new, :create]
 
   def index
+    # authorize_admin!
     @users = User.all
   end
 
   def new
+    # authorize_admin!
     @user = User.new
   end
 
   def create
+    # authorize_admin!
     @user = User.new(user_params)
     # puts @user
     if @user.save
@@ -21,9 +25,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    authorize!(@user)
   end
 
   def update
+    authorize!(@user)
     if @user.update_attributes(user_params)
       redirect_to root_path
     else
@@ -32,6 +38,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    authorize!(@user)
     @user.destroy
     redirect_to root_path
   end

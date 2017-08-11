@@ -20,4 +20,8 @@ module ApplicationHelper
     redirect_to root_path if !is_admin?
   end
 
+  def authorize!(user)
+    redirect_to root_path unless user == current_user || is_admin?
+  end
+
 end
