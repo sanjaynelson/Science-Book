@@ -18,7 +18,8 @@ class ObservationsController < ApplicationController
     elsif params[:procedure_id]
       @procedure = Procedure.find(params[:procedure_id])
       @observation = Observation.new(observation_params)
-      @observation.user = User.find_by(session[:id])
+      user = User.find_by(session[:id])
+      @procedure.username = user.username
       @procedure.observations << @observation
       if @observation.save
         # redirect_to action: 'index'
